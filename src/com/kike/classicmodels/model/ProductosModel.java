@@ -86,7 +86,7 @@ public class ProductosModel {
 	}
 
 	public List<ProductoDTO> buscarProductoConFiltros(String productCode, String productName, String productLine,
-			String productDescription, String productScale, String productVendor, Integer quantityInStock, Long buyPrice, Long MSRP) throws ClassNotFoundException, SQLException {
+			String productDescription, String productScale, String productVendor, Integer quantityInStock, Float buyPrice, Float MSRP) throws ClassNotFoundException, SQLException {
 		String sql = "Select * from products" 
 				+ " where productCode like ?"
 				+ " and productName like ?"
@@ -105,10 +105,11 @@ public class ProductosModel {
 		ps.setString(2, "%" + productName + "%");
 		ps.setString(3, "%" + productLine + "%");
 		ps.setString(4, "%" + productDescription + "%");
-		ps.setString(4, "%" + productScale + "%");
-		ps.setInt(4, quantityInStock );
-		ps.setLong(4, buyPrice );
-		ps.setLong(4, MSRP );
+		ps.setString(5, "%" + productScale + "%");
+		ps.setString(6, "%" + productVendor + "%");
+		ps.setInt(7, quantityInStock );
+		ps.setFloat(8, buyPrice );
+		ps.setFloat(9, MSRP );
 		System.out.println(ps);
 
 		ResultSet listaResultado = ps.executeQuery();
@@ -117,8 +118,8 @@ public class ProductosModel {
 			ProductoDTO nuevoResultado = new ProductoDTO(listaResultado.getString("productCode"),
 					listaResultado.getString("productName"), listaResultado.getString("productLine"),
 					listaResultado.getString("productDescription"), listaResultado.getString("productScale"), listaResultado.getString("productVendor"),
-					listaResultado.getInt("quantityInStock"), listaResultado.getLong("buyPrice"), 
-					listaResultado.getLong("mSRP"));
+					listaResultado.getInt("quantityInStock"), listaResultado.getFloat("buyPrice"), 
+					listaResultado.getFloat("mSRP"));
 
 			listaProductos.add(nuevoResultado);
 		}
