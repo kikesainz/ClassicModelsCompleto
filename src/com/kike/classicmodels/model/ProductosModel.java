@@ -86,9 +86,17 @@ public class ProductosModel {
 	}
 
 	public List<ProductoDTO> buscarProductoConFiltros(String productCode, String productName, String productLine,
-			String productDescription) throws ClassNotFoundException, SQLException {
-		String sql = "Select * from products" + " where productCode like ?" + " and productName like ?"
-				+ " and productLine like ?" + " and productDescription like ?";
+			String productDescription, String productScale, String productVendor, Integer quantityInStock, Long buyPrice, Long MSRP) throws ClassNotFoundException, SQLException {
+		String sql = "Select * from products" 
+				+ " where productCode like ?"
+				+ " and productName like ?"
+				+ " and productLine like ?" 
+				+ " and productDescription like ?"
+				+ " and productScale like ? "
+				+ " and productVendor like ? "
+				+ " and quantityInStock >= ? "
+				+ " and buyPrice >= ? "
+				+ " and MSRP >= ? ";
 		List<ProductoDTO> listaProductos = new ArrayList<>();
 		Connection conexxion = DBUtils.conexionBBDD();
 		PreparedStatement ps = null;
@@ -97,6 +105,10 @@ public class ProductosModel {
 		ps.setString(2, "%" + productName + "%");
 		ps.setString(3, "%" + productLine + "%");
 		ps.setString(4, "%" + productDescription + "%");
+		ps.setString(4, "%" + productScale + "%");
+		ps.setInt(4, quantityInStock );
+		ps.setLong(4, buyPrice );
+		ps.setLong(4, MSRP );
 		System.out.println(ps);
 
 		ResultSet listaResultado = ps.executeQuery();
@@ -104,7 +116,9 @@ public class ProductosModel {
 		while (listaResultado.next()) {
 			ProductoDTO nuevoResultado = new ProductoDTO(listaResultado.getString("productCode"),
 					listaResultado.getString("productName"), listaResultado.getString("productLine"),
-					listaResultado.getString("productDescription"));
+					listaResultado.getString("productDescription"), listaResultado.getString("productScale"), listaResultado.getString("productVendor"),
+					listaResultado.getInt("quantityInStock"), listaResultado.getLong("buyPrice"), 
+					listaResultado.getLong("mSRP"));
 
 			listaProductos.add(nuevoResultado);
 		}

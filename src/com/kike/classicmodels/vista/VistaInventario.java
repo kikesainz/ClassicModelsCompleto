@@ -110,7 +110,7 @@ public class VistaInventario {
 		String productDescription = sc.nextLine();
 		List<ProductoDTO> listaResultados = new ArrayList<>();
 		ProductosControlador pc = new ProductosControlador();
-		listaResultados = pc.buscarProductoConFiltros(productCode, productName, productLine, productDescription);
+		listaResultados = pc.buscarProductoConFiltros(productCode, productName, productLine, productDescription, null, null, null, null, null);
 		for (ProductoDTO productoDTO : listaResultados) {
 			System.out.println(productoDTO);
 		}

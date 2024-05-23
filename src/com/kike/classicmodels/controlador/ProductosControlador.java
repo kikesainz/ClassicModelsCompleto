@@ -18,10 +18,11 @@ public class ProductosControlador {
 	}
 
 	public List<ProductoDTO> buscarProductoConFiltros(String productCode, String productName, String productLine,
-			String productDescription) throws ClassNotFoundException, SQLException {
+			String productDescription, String productScale, String productVendor, Integer quantityInStock, Long buyPrice, Long MSRP)  throws ClassNotFoundException, SQLException {
 		List<ProductoDTO> listaProductos = new ArrayList<>();
 		ProductosModel pm = new ProductosModel();
-		listaProductos = pm.buscarProductoConFiltros( productCode,  productName,  productLine, productDescription);
+		listaProductos = pm.buscarProductoConFiltros(productCode, productName,  productLine,
+				 productDescription,  productScale,  productVendor,  quantityInStock,  buyPrice,  MSRP) ;
 		return listaProductos;
 	}
 	
