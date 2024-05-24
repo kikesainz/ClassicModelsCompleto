@@ -10,7 +10,7 @@ import com.kike.classicmodels.model.ProductosModel;
 public class ProductosControlador {
 
 	public int crearProducto(String productCode, String productName, String productLine, String productScale,
-			String productVendor, String productDescription, Integer quantityInStock, float buyPrice, float MSRP)
+			String productVendor, String productDescription, Float quantityInStock, Float buyPrice, Float MSRP)
 			throws ClassNotFoundException, SQLException {
 		ProductosModel pm = new ProductosModel();
 		return pm.crearProducto(productCode, productName, productLine, productScale, productVendor, productDescription,
@@ -18,7 +18,7 @@ public class ProductosControlador {
 	}
 
 	public List<ProductoDTO> buscarProductoConFiltros(String productCode, String productName, String productLine,
-			String productDescription, String productScale, String productVendor, Integer quantityInStock, Float buyPrice, Float MSRP)  throws ClassNotFoundException, SQLException {
+			String productDescription, String productScale, String productVendor, Float quantityInStock, Float buyPrice, Float MSRP)  throws ClassNotFoundException, SQLException {
 		List<ProductoDTO> listaProductos = new ArrayList<>();
 		ProductosModel pm = new ProductosModel();
 		listaProductos = pm.buscarProductoConFiltros(productCode, productName,  productLine,
@@ -27,7 +27,7 @@ public class ProductosControlador {
 	}
 	
 	public int actualizarProducto(String productCode, String productName, String productLine, String productScale,
-			String productVendor, String productDescription, Integer quantityInStock, float buyPrice, float MSRP)
+			String productVendor, String productDescription, Float quantityInStock, float buyPrice, float MSRP)
 			throws ClassNotFoundException, SQLException {
 		ProductosModel pm = new ProductosModel();
 		return pm.actualizarProducto(productCode, productName, productLine, productScale, productVendor, productDescription,

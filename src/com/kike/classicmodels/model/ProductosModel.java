@@ -13,7 +13,7 @@ import com.kike.classicmodels.utils.DBUtils;
 public class ProductosModel {
 
 	public int crearProducto(String productCode, String productName, String productLine, String productScale,
-			String productVendor, String productDescription, Integer quantityInStock, float buyPrice, float MSRP)
+			String productVendor, String productDescription, Float quantityInStock, float buyPrice, float MSRP)
 			throws ClassNotFoundException, SQLException {
 		String sql = "Insert into products (productCode,productName,productLine,productScale,productVendor,productDescription,quantityInStock,buyPrice,MSRP)"
 				+ "values" + "(?,?,?,?,?,?,?,?,?)";
@@ -27,7 +27,7 @@ public class ProductosModel {
 		ps.setString(4, productScale);
 		ps.setString(5, productVendor);
 		ps.setString(6, productDescription);
-		ps.setInt(7, quantityInStock);
+		ps.setFloat(7, quantityInStock);
 		ps.setFloat(8, buyPrice);
 		ps.setFloat(9, MSRP);
 		resultado = ps.executeUpdate();
@@ -36,7 +36,7 @@ public class ProductosModel {
 	}
 
 	public int actualizarProducto(String productCode, String productName, String productLine, String productScale,
-			String productVendor, String productDescription, Integer quantityInStock, float buyPrice, float MSRP)
+			String productVendor, String productDescription, Float quantityInStock, float buyPrice, float MSRP)
 			throws ClassNotFoundException, SQLException {
 		Integer resultado = null;
 		String sql = "UPDATE  products set productName = Case when ? = '' then productName else ? end,"
@@ -66,8 +66,8 @@ public class ProductosModel {
 		ps.setString(9, productDescription);
 		ps.setString(10, productDescription);
 
-		ps.setInt(11, quantityInStock);
-		ps.setInt(12, quantityInStock);
+		ps.setFloat(11, quantityInStock);
+		ps.setFloat(12, quantityInStock);
 
 		ps.setFloat(13, buyPrice);
 		ps.setFloat(14, buyPrice);
@@ -86,7 +86,7 @@ public class ProductosModel {
 	}
 
 	public List<ProductoDTO> buscarProductoConFiltros(String productCode, String productName, String productLine,
-			String productDescription, String productScale, String productVendor, Integer quantityInStock, Float buyPrice, Float MSRP) throws ClassNotFoundException, SQLException {
+			String productDescription, String productScale, String productVendor, Float quantityInStock, Float buyPrice, Float MSRP) throws ClassNotFoundException, SQLException {
 		String sql = "Select * from products" 
 				+ " where productCode like ?"
 				+ " and productName like ?"
@@ -107,7 +107,7 @@ public class ProductosModel {
 		ps.setString(4, "%" + productDescription + "%");
 		ps.setString(5, "%" + productScale + "%");
 		ps.setString(6, "%" + productVendor + "%");
-		ps.setInt(7, quantityInStock );
+		ps.setFloat(7, quantityInStock );
 		ps.setFloat(8, buyPrice );
 		ps.setFloat(9, MSRP );
 		System.out.println(ps);
@@ -118,7 +118,7 @@ public class ProductosModel {
 			ProductoDTO nuevoResultado = new ProductoDTO(listaResultado.getString("productCode"),
 					listaResultado.getString("productName"), listaResultado.getString("productLine"),
 					listaResultado.getString("productDescription"), listaResultado.getString("productScale"), listaResultado.getString("productVendor"),
-					listaResultado.getInt("quantityInStock"), listaResultado.getFloat("buyPrice"), 
+					listaResultado.getFloat("quantityInStock"), listaResultado.getFloat("buyPrice"), 
 					listaResultado.getFloat("mSRP"));
 
 			listaProductos.add(nuevoResultado);

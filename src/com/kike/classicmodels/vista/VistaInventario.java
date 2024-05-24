@@ -66,13 +66,13 @@ public class VistaInventario {
 		System.out.println("Introduce la descripcion del producto");
 		String productDescription = sc.nextLine();
 		System.out.println("Introduce la cantidad en stock");
-		Integer quantityInStock;
+		Float quantityInStock;
 		try {
-			quantityInStock = sc.nextInt();
+			quantityInStock = sc.nextFloat();
 			sc.nextLine();
 
 		} catch (Exception e) {
-			quantityInStock = 0;
+			quantityInStock = 0.0f;
 		}
 		System.out.println("Introduce el precio de compra");
 		float buyPrice;
@@ -143,27 +143,27 @@ public class VistaInventario {
 		System.out.println("Introduce la descripcion del a crear");
 		String productDescription = sc.nextLine();
 		System.out.println("Introduce la cantidad en stock a crear");
-		Integer quantityInStock;
+		Float quantityInStock;
 		try {
-			quantityInStock = Integer.parseInt(sc.nextLine());
+			quantityInStock = Float.parseFloat(sc.nextLine());
 
 		} catch (Exception e) {
-			quantityInStock = 0;
+			quantityInStock = 0.0f;
 		}
 		System.out.println("Introduce buyPrice producto");
-		float buyPrice;
+		Float buyPrice;
 		try {
 			buyPrice = Float.parseFloat(sc.nextLine());
 		} catch (Exception e) {
-			buyPrice = 0;
+			buyPrice = 0.0f;
 		}
 		System.out.println("Introduce MSRP producto");
 
-		float MSRP;
+		Float MSRP;
 		try {
 			MSRP = Float.parseFloat(sc.nextLine());
 		} catch (Exception e) {
-			MSRP = 0;
+			MSRP = 0.0f;
 		}
 
 		ProductosControlador pc = new ProductosControlador();

@@ -7,12 +7,12 @@ public class ProductoDTO {
 	private String productDescription;
 	private String productScale;
 	private String productVendor;
-	private Integer quantityInStock;
+	private Float quantityInStock;
 	
 	private Float buyPrice;
 	private Float MSRP;
 	public ProductoDTO(String productCode, String productName, String productLine, String productDescription,
-			String productScale, String productVendor, Integer quantityInStock, Float buyPrice, Float mSRP) {
+			String productScale, String productVendor, Float quantityInStock, Float buyPrice, Float mSRP) {
 		super();
 		this.productCode = productCode;
 		this.productName = productName;
@@ -60,10 +60,10 @@ public class ProductoDTO {
 	public void setProductVendor(String productVendor) {
 		this.productVendor = productVendor;
 	}
-	public Integer getQuantityInStock() {
+	public Float getQuantityInStock() {
 		return quantityInStock;
 	}
-	public void setQuantityInStock(Integer quantityInStock) {
+	public void setQuantityInStock(Float quantityInStock) {
 		this.quantityInStock = quantityInStock;
 	}
 	public Float getBuyPrice() {
